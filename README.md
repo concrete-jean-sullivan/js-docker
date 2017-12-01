@@ -1,2 +1,2 @@
-# js-docker
-ambiente docker de teste
+
+# Ambiente docker "Testes com Compose"
