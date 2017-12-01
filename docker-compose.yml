@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  frontend:
+    image: ubuntu-front
+    container_name: js-front-01
+    networks: 
+      - redelocal
+    ports: 
+      - 80:80
+  app:
+    image: ubuntu-app
+    container_name: js-app-01
+    networks:
+      - redelocal
+    ports:
+      - 8080:8080
+  bd:
+    image: mariadb-13
+    container_name: js-bd-01
+    networks:
+      - redelocal
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=db_teste
+      - MYSQL_USER=db_teste
+      - MYSQL_PASSWORD=dual2020
+    depends_on:
+      - app
+networks:
+  redelocal:
+    driver: bridge
